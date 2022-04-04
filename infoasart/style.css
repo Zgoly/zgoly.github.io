@@ -1,11 +1,10 @@
 :root {
-	--navbar-color: #fff;
-	--bg-color1: #fff;
-	--bg-color2: #008cff45;
+	--color1: #fff;
+	--color2: #0077ff;
+	--color3: #008cff50;
 	--shadow-color: #00000045;
 	--text-color1: #fff;
 	--text-color2: #000;
-	--text-color3: #0077ff;
 	--padding: 100px;
 	scroll-behavior: smooth;
 }
@@ -24,7 +23,7 @@ body {
 
 
 .navbar {
-	background: var(--navbar-color);
+	background: var(--color1);
 	box-shadow: 0px 0px 20px 10px var(--shadow-color);
 	position: fixed;
 	padding: 20px;
@@ -40,7 +39,7 @@ body {
 	text-decoration: none;
 }
 .navbutton:hover {
-	background: var(--bg-color2);
+	background: var(--color3);
 }
 
 
@@ -51,7 +50,7 @@ header {
 .header {
 	height: 100vh;
 	width: 100%;
-	background: linear-gradient(0, var(--bg-color1), var(--bg-color2) 50%);
+	background: linear-gradient(0, var(--color1), var(--color3) 50%);
 	background-size: cover;
 	text-align: center;
 	display: flex;
@@ -87,12 +86,12 @@ a {font-size: large;}
 
 
 .link {
-	color: var(--text-color3) !important;
+	color: var(--color2) !important;
 	text-decoration: none;
 	transition: .2s;
 }
 .link:hover {
-	text-shadow: var(--text-color3) 1px 0 5px;
+	text-shadow: var(--color3) 1px 0 5px;
 }
 
 

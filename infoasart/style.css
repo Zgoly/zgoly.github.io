@@ -1,7 +1,8 @@
 :root {
 	--color1: #fff;
 	--color2: #0077ff;
-	--color3: #008cff50;
+	--color3: #008cff45;
+	--color4: #008cff65;
 	--shadow-color: #00000045;
 	--text-color1: #fff;
 	--text-color2: #000;
@@ -50,7 +51,7 @@ header {
 .header {
 	height: 100vh;
 	width: 100%;
-	background: linear-gradient(0, var(--color1), var(--color3) 50%);
+	background: linear-gradient(0, var(--color1), var(--color4) 50%);
 	background-size: cover;
 	text-align: center;
 	display: flex;
@@ -78,7 +79,7 @@ footer {
 
 
 
-.content {background: var(--bg-color1); padding-top: 1px;}
+.content {background: var(--color1); padding-top: 1px;}
 h1 {font-size: 50px;}
 h2 {font-size: x-large;}
 a {font-size: large;}
@@ -91,7 +92,7 @@ a {font-size: large;}
 	transition: .2s;
 }
 .link:hover {
-	text-shadow: var(--color3) 1px 0 5px;
+	text-shadow: var(--color4) 1px 0 5px;
 }
 
 

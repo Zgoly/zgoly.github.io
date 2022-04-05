@@ -1,13 +1,10 @@
 <body>
   <title>Информатика как искусство</title>
+  
   <link rel="stylesheet" type="text/css" href="style.css" media="screen"/>
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-  <script type="text/javascript">
-    $(document).on('scroll', function(){
-      $('.header-img').css("bottom", Math.max(window.scrollY / 3) + "px");
-      $('.center-all').css("transform", "translateY(" + -Math.max(window.scrollY * .05) + "px)");
-    })
-  </script>
+  <script src="script.js"></script>
+  
   <div class="navbar">
     <a class="navbutton" href="#home">Главная</a>
     <a class="navbutton" href="#s1">Что такое искусство?</a>
@@ -78,6 +75,6 @@
     </div>
   </div>
   <footer>
-    <p>©2022 Zgoly | lioshahihluha@gmail.com</p>
+    <a>©2022 Zgoly | lioshahihluha@gmail.com</a>
   </footer>
 </body>

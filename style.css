@@ -1,8 +1,8 @@
 :root {
-	--background: rgb(30, 40, 80);
-	--shadow: #00000045;
-	--text: #fff;
-	scroll-behavior: smooth;
+    --background: rgb(30, 40, 80);
+    --shadow: #00000045;
+    --text: #fff;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -34,9 +34,10 @@ body {
     border-radius: 30px;
     padding: 20px;
     margin: 30px;
-    transition: 0.5;
+    transition: .5s;
 }
 
 .div:hover {
     box-shadow: 0 0px 20px 0px var(--shadow);
+    transform: scale(0.98);
 }

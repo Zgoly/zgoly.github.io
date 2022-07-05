@@ -135,15 +135,15 @@ StartCutscene(workspace.Cutscene)</code></pre>
 Debounce = false
 
 Part.Touched:Connect(function(Hit)
-    if Hit:FindFirstChild('Humanoid') and Debounce then
-        Debounce = true
-        local Player = game.Players:GetPlayerFromCharacter(Hit.Parent)
-        game.ReplicatedStorage.RemoteEvent:FireClient(Player, workspace.Cutscene)
-        wait(10)
-        Debounce = false
-    end
+	if Hit.Parent:FindFirstChild('Humanoid') and not Debounce then
+		Debounce = true
+		local Player = game.Players:GetPlayerFromCharacter(Hit.Parent)
+		game.ReplicatedStorage.StartCutscene:FireClient(Player, workspace.Cutscene)
+		wait(30)
+		Debounce = false
+	end
 end)</code></pre>
-            <p class="block-text">That's it! Now, after player touches the part, a cutscene will start for him, and for 10 seconds it will not be possible to start cutscene again.</p>
+            <p class="block-text">That's it! Now, after player touches the part, a cutscene will start for him, and for 30 seconds it will not be possible to start cutscene again.</p>
 
         </div>
         <div class="block" id="o2">

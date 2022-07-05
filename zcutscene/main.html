@@ -62,7 +62,7 @@
         <div class="block" id="b1">
             <h1 class="block-title">(1) Insert objects</h1>
             <p class="block-text">That button inserts 2 objects into workspace: <ol><li><code>Cutscene</code> folder</li><li><code>CutsceneScript</code></li></ol></p>
-            <p class="block-text">Click on it and put inserted objects in:<ol><li>You can keep <code>Cutscene</code> folder in workspace.</li><li>You need to put <code>CutsceneScript</code> in any of these places: <ul><li><code>ReplicatedFirst</code></li><li><code>StarterGui</code></li><li><code>StarterPack</code></li><li><code>StarterCharacterScripts</code></li><li><code>StarterPlayerScripts</code></li></ul>If you don't know where to put it, then put it in <code>StarterCharacterScripts</code>.</li></ol></p>
+            <p class="block-text">Click on it and put inserted objects in:<ol><li>You can keep <code>Cutscene</code> folder in workspace.</li><li>If you want, you can move <code>CutsceneScript</code> in any of these places: <ul><li><code>ReplicatedFirst</code></li><li><code>StarterGui</code></li><li><code>StarterPack</code></li><li><code>StarterCharacterScripts</code></li><li><code>StarterPlayerScripts</code></li></ul></li></ol></p>
             <p class="block-text">Preparation completed!</p>
             
         </div>
@@ -118,18 +118,22 @@
             <pre><code class="language-lua">wait()
 StartCutscene(workspace.Cutscene)</code></pre>
             <p class="block-text">With this one:</p>
-            <pre><code class="language-lua">game.ReplicatedStorage.StartCutscene.OnClientEvent:Connect(StartCutscene(workspace.Cutscene))</code></pre>
+            <pre><code class="language-lua">game.ReplicatedStorage.StartCutscene.OnClientEvent:Connect(function()
+	StartCutscene(workspace.Cutscene)
+end)</code></pre>
             <p class="block-text">Next, you need to create a <code>Script</code> and put it wherever you like. I recommend putting it in <code>ServerScriptService</code>. Open script you just created and paste a couple of lines into it:</p>
-            <pre><code class="language-lua">wait(10)
+            <pre><code class="language-lua">wait(30)
 game.ReplicatedStorage.StartCutscene:FireAllClients(workspace.Cutscene)</code></pre>
-            <p class="block-text">That's it! Now, after 10 seconds, for every player on the server will start a cutscene.</p>
+            <p class="block-text">That's it! Now, after 30 seconds, for every player on the server will start a cutscene.</p>
             <h1 class="block-title">2. Start cutscene for player who touched part</h1>
             <p class="block-text">First create a <code>RemoteEvent</code> and put it in <code>ReplicatedStorage</code>. Name it <code>StartCutscene</code>.</p>
             <p class="block-text">Next, open <code>CutsceneScript</code>, scroll to the bottom and replace these lines:</p>
             <pre><code class="language-lua">wait()
 StartCutscene(workspace.Cutscene)</code></pre>
             <p class="block-text">With this one:</p>
-            <pre><code class="language-lua">game.ReplicatedStorage.StartCutscene.OnClientEvent:Connect(StartCutscene(workspace.Cutscene))</code></pre>
+            <pre><code class="language-lua">game.ReplicatedStorage.StartCutscene.OnClientEvent:Connect(function()
+	StartCutscene(workspace.Cutscene)
+end)</code></pre>
             <p class="block-text">Next, you need to create a <code>Script</code> and put it in the part. Open script you just created and paste this code into it:</p>
             <pre><code class="language-lua">Part = script.Parent
 Debounce = false

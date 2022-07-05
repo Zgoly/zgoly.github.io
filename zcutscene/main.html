@@ -39,6 +39,12 @@
             <a class="sidebar-text" href="#b7">(7) Hide/Show</a>
         </div>
         <div class="sidebar-div">
+            <h3 class="sidebar-section">Editing</h3>
+        </div>
+        <div class="sidebar-div">
+            <a class="sidebar-text" href="#e1">Create/edit</a>
+        </div>
+        <div class="sidebar-div">
             <h3 class="sidebar-section">Other</h3>
         </div>
         <div class="sidebar-div">
@@ -58,13 +64,30 @@
         </div>
         <div class="block" id="home">
             <h1 class="block-title">Home</h1>
-            <p class="block-text">This is the home page of the <a class="link" href="https://www.roblox.com/library/10081389198/">ZCutscene</a> plugin wiki. This plugin will help you create amazing scenes and customize them as much as possible. On this page you can find information on: <ul><li>How to use ZCutscene plugin</li><li>Plugin features</li><li>Little introduction to ZCutscene script</li><li>And many more!</li></ul></p>
+            <p class="block-text">This is the home page of the <a class="link" href="https://www.roblox.com/library/10081389198/">ZCutscene</a> plugin wiki. This plugin will help you create amazing scenes and customize them as much as possible. On this page you can find information on: <ul>
+                <li>How to use ZCutscene plugin</li>
+                <li>Plugin features</li>
+                <li>Little introduction to ZCutscene script</li>
+                <li>And many more!</li>
+            </ul></p>
             <p class="block-text">To navigate faster, use side menu.</p>
         </div>
         <div class="block" id="b1">
             <h1 class="block-title">(1) Insert objects</h1>
-            <p class="block-text">That button inserts 2 objects into workspace: <ol><li><code>Cutscene</code> folder</li><li><code>CutsceneScript</code></li></ol></p>
-            <p class="block-text">Click on it and put inserted objects in:<ol><li>You can keep <code>Cutscene</code> folder in workspace.</li><li>If you want, you can move <code>CutsceneScript</code> in any of these places: <ul><li><code>ReplicatedFirst</code></li><li><code>StarterGui</code></li><li><code>StarterPack</code></li><li><code>StarterCharacterScripts</code></li><li><code>StarterPlayerScripts</code></li></ul></li></ol></p>
+            <p class="block-text">That button inserts 2 objects into workspace: <ol>
+                <li><code>Cutscene</code> folder</li>
+                <li><code>CutsceneScript</code></li>
+            </ol></p>
+            <p class="block-text">Click on it and put inserted objects in:<ol>
+                <li>You can keep <code>Cutscene</code> folder in workspace.</li>
+                <li>If you want, you can move <code>CutsceneScript</code> in any of these places: <ul>
+                    <li><code>ReplicatedFirst</code></li>
+                    <li><code>StarterGui</code></li>
+                    <li><code>StarterPack</code></li>
+                    <li><code>StarterCharacterScripts</code></li>
+                    <li><code>StarterPlayerScripts</code></li>
+                </ul></li>
+            </ol></p>
             <p class="block-text">Preparation completed!</p>
             
         </div>
@@ -101,13 +124,36 @@
         </div>
         <div class="block" id="b6">
             <h1 class="block-title">(6) Change grid size</h1>
-            <p class="block-text">Grid affects on position and orientation of camera positions. You can change it to:<ol><li><code>1</code></li><li><code>0.5</code></li><li><code>0.1</code></li><li><code>0</code></li></ol></p>
+            <p class="block-text">Grid affects on position and orientation of camera positions. You can change it to:<ol>
+                <li><code>1</code></li>
+                <li><code>0.5</code></li>
+                <li><code>0.1</code></li>
+                <li><code>0</code></li>
+            </ol></p>
             <p class="block-text">If <code>0</code>, then grid is disabled.</p>
         </div>
         <div class="block" id="b7">
             <h1 class="block-title">(7) Hide/Show</h1>
             <p class="block-text">Hides/shows all camera positions in the cutscene folder.</p>
             <img src="images/7.gif"></img>
+        </div>
+        <div class="block" id="e1">
+            <h1 class="block-title">Create/edit camera positions</h1>
+            <p class="block-text">As mentioned earlier, to create a camera position, you need to click on the <code>(3) Create new</code> button. Thwn what about editing duration, animation, FOV...?</p>
+            <p class="block-text">Everything is very simple - attributes! If you have created enough camera positions and want to edit them, then:<ul>
+                <li>Select camera position</li>
+                <li>Look in <code>Properties</code> and scroll to the bottom</li>
+                <li>Change variable values!</li>
+            </ul></p>
+            <img src="images/attributes.png"></img>
+            <p class="block-text">You can change variable values to whatever you want. Just remember a few things:<ul>
+                <li>If field for number, write number there</li>
+                <li>If field requires animation name, write name without <code>Enum.Xx.</code> there. Example:<ul>
+                    <li><code>Enum.EasingStyle.Quad</code> → <code>Quad</code></li>
+                    <li><code>Enum.EasingDirection.Out</code> → <code>Out</code></li>
+                </ul>
+            </ul></p>
+            <p class="block-text">Also, if you don't want to change any variable values, for example <code>FOV</code>, just click on gear next to variable → Delete. If variable is optional, script will skip it.</p>
         </div>
         <div class="block" id="o1">
             <h1 class="block-title">ZCutscene script</h1>

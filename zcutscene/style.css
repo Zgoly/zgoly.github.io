@@ -1,9 +1,8 @@
 :root {
     --background: #192341;
-    --sidebar_background: #00000025;
-    --sidebar_background2: #000000bf;
+    --background2: #141c34;
+    --mobile_background: #000000bf;
     --text_background: #00000050;
-    --block_background: #00000025;
     --code_background: #353535;
     --shadow: #00000075;
     --text_color: #fff;
@@ -14,8 +13,9 @@
 }
 
 body {
-    background: var(--background);
+    margin: 0;
     font-family: sans-serif;
+    background: var(--background);
     color: var(--text_color);
 }
 
@@ -67,10 +67,9 @@ code {
     left: 0;
     width: 250px;
     height: 100%;
-    z-index: 1;
+    z-index: 2;
     padding: 20px 0;
-    overflow-y: auto;
-    background: var(--sidebar_background);
+    background: var(--background2);
     box-shadow: 0 0 25px 5px var(--shadow);
     animation: 0.5s cubic-bezier(0, 1, .75, 1) ShowSidebar;
     transition: 0.5s;
@@ -120,7 +119,7 @@ code {
     border-radius: var(--border-radius);
     opacity: 0;
     z-index: 0;
-    background: var(--block_background);
+    background: var(--background2);
     box-shadow: 0 15px 25px 5px var(--shadow);
     animation: 1s cubic-bezier(0, 1, .75, 1) ShowBlock;
     animation-fill-mode: forwards;
@@ -136,6 +135,17 @@ code {
 
 .block-text {
     margin: 10px;
+}
+
+footer {
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    width: 99%;
+    height: 40px;
+    background: var(--background2);
+    box-shadow: 0 0 25px 5px var(--shadow);
 }
 
 @media (max-width:1000px) {
@@ -164,6 +174,6 @@ code {
     .sidebar:hover {
         width: 60%;
         transform: translateX(0%);
-        background-color: var(--sidebar_background2);
+        background-color: var(--mobile_background);
     }
 }

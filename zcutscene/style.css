@@ -68,7 +68,6 @@ code {
     width: 250px;
     height: 100%;
     z-index: 2;
-    padding: 20px 0;
     background: var(--background2);
     box-shadow: 0 0 25px 5px var(--shadow);
     animation: 0.5s cubic-bezier(0, 1, .75, 1) ShowSidebar;
@@ -148,7 +147,21 @@ footer {
     box-shadow: 0 0 25px 5px var(--shadow);
 }
 
-@media (max-width:1000px) {
+@media (max-width:1100px) {
+    #mobile {
+        display: block;
+    }
+
+    .sidebar {
+        transform: translateX(-80%);
+    }
+
+    .sidebar:hover {
+        transform: translateX(0%);
+    }
+}
+
+@media only screen and (max-device-width: 480px) {
     body {
         font-size: 200%;
     }
@@ -172,7 +185,7 @@ footer {
     }
 
     .sidebar:hover {
-        width: 60%;
+        width: 75%;
         transform: translateX(0%);
         background-color: var(--mobile_background);
     }

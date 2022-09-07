@@ -65,13 +65,15 @@ document.addEventListener("mouseup", () => { document.removeEventListener("mouse
     /* GUI */
     .gui {
         margin: 0;
-        height: 90%;
+        height: 100%;
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         width: fit-content;
-
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 
     .headers {
@@ -95,7 +97,7 @@ document.addEventListener("mouseup", () => { document.removeEventListener("mouse
     .modules {
         transition: 0.5s;
         background: rgba(20, 20, 20, 0.78);
-        max-height: 95%;
+        max-height: 90%;
         overflow: auto;
     }
     .hidden {

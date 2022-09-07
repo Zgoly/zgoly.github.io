@@ -13,6 +13,6 @@ You have 3 parameters:
 You can make you own link using example below
 
 ## Example
-
 `https://zgoly.github.io/addonview/generate?user=Zgoly&repo=Meteorist&link=src/main/java/zgoly/meteorist/modules`
+
 This url has everything you need for normal display of modules

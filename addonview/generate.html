@@ -1,27 +1,28 @@
 <link href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet">
 
 <div class="gui">
-    <div class="titles width"></div>
+    <div class="headers width"></div>
     <div class="modules width"></div>
 </div>
 
 <script>
 // URL Params
-const urlParams = new URLSearchParams(window.location.search);
-const user = urlParams.get('user');
-const repo = urlParams.get('repo');
-const link = urlParams.get('link');
+const urlParams = new URLSearchParams(window.location.search)
+const user = urlParams.get('user'), repo = urlParams.get('repo'), link = urlParams.get('link')
 
-// Creating Title
-const title = document.createElement("div");
-title.innerText = repo
-title.classList.add("title")
-document.getElementsByClassName("titles")[0].appendChild(title)
+const gui = document.querySelector(".gui"), headers = gui.querySelector(".headers"), modules = gui.querySelector(".modules")
+
+// Creating Header
+const header = document.createElement("div")
+header.innerText = repo
+header.classList.add("header")
+document.getElementsByClassName("headers")[0].appendChild(header)
 
 // Creating Icon
-const icon = document.createElement("i");
+const icon = document.createElement("i")
 icon.classList.add("icon")
-document.getElementsByClassName("titles")[0].appendChild(icon)
+icon.onclick= function() {modules.classList.toggle("hidden")}
+document.getElementsByClassName("headers")[0].appendChild(icon)
 
 // Fetching Modules
 fetch(`https://api.github.com/repos/${user}/${repo}/contents/${link}`)
@@ -29,16 +30,24 @@ fetch(`https://api.github.com/repos/${user}/${repo}/contents/${link}`)
 .then((out) => {
     for (var i = 0; i < out.length; i++) {
         // Creating Module
-        const module = document.createElement("div");
+        const module = document.createElement("div")
         module.innerText = out[i]["name"].replaceAll(".java", "")
         module.classList.add("module")
         document.getElementsByClassName("modules")[0].appendChild(module)
     }
 })
-.catch(error => {
-        element.parentElement.innerHTML = `Error: ${error}`;
-        console.error('There was an error!', error);
-    });
+
+// Drag script
+function onDrag({movementX, movementY}){
+    let getStyle = window.getComputedStyle(gui)
+    let leftVal = parseInt(getStyle.left)
+    let topVal = parseInt(getStyle.top)
+    gui.style.left = `${leftVal + movementX}px`
+    gui.style.top = `${topVal + movementY}px`
+    console.log("move")
+}
+headers.addEventListener("mousedown", () => { document.addEventListener("mousemove", onDrag) })
+document.addEventListener("mouseup", () => { document.removeEventListener("mousemove", onDrag) })
 </script>
 
 <style>
@@ -49,11 +58,14 @@ fetch(`https://api.github.com/repos/${user}/${repo}/contents/${link}`)
         font-size: 20px;
         font-family: Comfortaa;
         text-align: center;
+        user-select: none;
+        overflow: hidden;
     }
 
     /* GUI */
     .gui {
         margin: 0;
+        height: 100%;
         position: absolute;
         top: 50%;
         left: 50%;
@@ -62,7 +74,7 @@ fetch(`https://api.github.com/repos/${user}/${repo}/contents/${link}`)
 
     }
 
-    .titles {
+    .headers {
         padding: 6px;
         font-size: 1.2em;
         background: rgb(145, 61, 226);
@@ -81,7 +93,13 @@ fetch(`https://api.github.com/repos/${user}/${repo}/contents/${link}`)
 
     /* Modules */
     .modules {
+        transition: 0.5s;
         background: rgba(20, 20, 20, 0.78);
+        max-height: 80%;
+        overflow: auto;
+    }
+    .hidden {
+        max-height: 0%;
     }
     .module {
         padding: 6px;

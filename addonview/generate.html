@@ -1,0 +1,108 @@
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet">
+
+<div class="gui">
+    <div class="titles width"></div>
+    <div class="modules width"></div>
+</div>
+
+<script>
+// URL Params
+const urlParams = new URLSearchParams(window.location.search);
+const user = urlParams.get('user');
+const repo = urlParams.get('repo');
+const link = urlParams.get('link');
+
+// Creating Title
+const title = document.createElement("div");
+title.innerText = repo
+title.classList.add("title")
+document.getElementsByClassName("titles")[0].appendChild(title)
+
+// Creating Icon
+const icon = document.createElement("i");
+icon.classList.add("icon")
+document.getElementsByClassName("titles")[0].appendChild(icon)
+
+// Fetching Modules
+fetch(`https://api.github.com/repos/${user}/${repo}/contents/${link}`)
+.then(res => res.json())
+.then((out) => {
+    for (var i = 0; i < out.length; i++) {
+        // Creating Module
+        const module = document.createElement("div");
+        module.innerText = out[i]["name"].replaceAll(".java", "")
+        module.classList.add("module")
+        document.getElementsByClassName("modules")[0].appendChild(module)
+    }
+})
+.catch(error => {
+        element.parentElement.innerHTML = `Error: ${error}`;
+        console.error('There was an error!', error);
+    });
+</script>
+
+<style>
+    /* Background and more */
+    body {
+        background: center / cover no-repeat url(screenshot.png);
+        color: #fff;
+        font-size: 20px;
+        font-family: Comfortaa;
+        text-align: center;
+    }
+
+    /* GUI */
+    .gui {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: fit-content;
+
+    }
+
+    .titles {
+        padding: 6px;
+        font-size: 1.2em;
+        background: rgb(145, 61, 226);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Width */
+    .width {
+        width: 100%;
+        width: -moz-available;
+        width: -webkit-fill-available;
+        width: fill-available;
+    }
+
+    /* Modules */
+    .modules {
+        background: rgba(20, 20, 20, 0.78);
+    }
+    .module {
+        padding: 6px;
+        transition: 0.5s ease-out;
+        background: linear-gradient(to left, transparent 50%, rgb(50, 50, 50) 50%) right;
+        background-size: 200% 100%;
+
+        width: 100%;
+        width: -moz-available;
+        width: -webkit-fill-available;
+        width: fill-available;
+    }
+    .module:hover {
+        background-position: left;
+    }
+
+    /* Icon */
+    .icon {
+        content: url("https://github.com/MeteorDevelopment/meteor-client/raw/master/src/main/resources/assets/meteor-client/textures/icons/gui/triangle.png");
+        height: 20px;
+        width: 20px;
+        margin-left: 6px;
+    }
+</style>

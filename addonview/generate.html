@@ -8,7 +8,7 @@
 <script>
 // URL params
 const urlParams = new URLSearchParams(window.location.search)
-const user = urlParams.get('user'), repo = urlParams.get('repo'), link = urlParams.get('link')
+const user = urlParams.get('user'), repo = urlParams.get('repo'), path = urlParams.get('path')
 
 const gui = document.querySelector(".gui"), headers = gui.querySelector(".headers"), modules = gui.querySelector(".modules")
 
@@ -28,7 +28,7 @@ icon.onclick = function() {
 document.getElementsByClassName("headers")[0].appendChild(icon)
 
 // Fetching modules
-fetch(`https://api.github.com/repos/${user}/${repo}/contents/${link}`)
+fetch(`https://api.github.com/repos/${user}/${repo}/contents/${path}`)
 .then(res => res.json())
 .then((out) => {
     for (var i = 0; i < out.length; i++) {

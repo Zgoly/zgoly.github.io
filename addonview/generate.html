@@ -36,6 +36,7 @@ fetch(`https://api.github.com/repos/${user}/${repo}/contents/${link}`)
         const module = document.createElement("div")
         module.innerText = out[i]["name"].replaceAll(".java", "")
         module.classList.add("module")
+        module.onclick = function() { this.classList.toggle("active") }
         document.getElementsByClassName("modules")[0].appendChild(module)
     }
 
@@ -118,6 +119,11 @@ document.addEventListener("mouseup", () => { document.removeEventListener("mouse
     }
     .module:hover {
         background-position: left;
+    }
+    .active {
+        transition: none;
+        background: rgb(50, 50, 50);
+        border-left: 3px solid rgb(145, 61, 226);
     }
 
     /* Icon */

@@ -6,19 +6,19 @@
 </div>
 
 <script>
-// URL Params
+// URL params
 const urlParams = new URLSearchParams(window.location.search)
 const user = urlParams.get('user'), repo = urlParams.get('repo'), link = urlParams.get('link')
 
 const gui = document.querySelector(".gui"), headers = gui.querySelector(".headers"), modules = gui.querySelector(".modules")
 
-// Creating Header
+// Creating header
 const header = document.createElement("div")
 header.innerText = repo
 header.classList.add("header")
 document.getElementsByClassName("headers")[0].appendChild(header)
 
-// Creating Icon
+// Creating icon
 const icon = document.createElement("i")
 icon.classList.add("icon")
 icon.onclick= function() {modules.classList.toggle("hidden")}
@@ -29,12 +29,24 @@ fetch(`https://api.github.com/repos/${user}/${repo}/contents/${link}`)
 .then(res => res.json())
 .then((out) => {
     for (var i = 0; i < out.length; i++) {
-        // Creating Module
+        // Creating module
         const module = document.createElement("div")
         module.innerText = out[i]["name"].replaceAll(".java", "")
         module.classList.add("module")
         document.getElementsByClassName("modules")[0].appendChild(module)
     }
+
+    // Calculating max height
+    function onResize() { modules.style.maxHeight = `${window.innerHeight - 100}px` }
+    window.addEventListener('resize', onResize)
+    onResize()
+
+    // Calculating position
+    function center(item) {
+        item.style.left = `${window.innerWidth / 2 - item.clientWidth / 2}px`
+        item.style.top = `${window.innerHeight / 2 - item.clientHeight / 2}px` 
+    }
+    center(gui)
 })
 
 // Drag script
@@ -64,16 +76,9 @@ document.addEventListener("mouseup", () => { document.removeEventListener("mouse
 
     /* GUI */
     .gui {
-        margin: 0;
-        height: 100%;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
         width: fit-content;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        position: absolute;
+        transition: 0.1s;
     }
 
     .headers {
@@ -97,11 +102,10 @@ document.addEventListener("mouseup", () => { document.removeEventListener("mouse
     .modules {
         transition: 0.5s;
         background: rgba(20, 20, 20, 0.78);
-        max-height: 90%;
         overflow: auto;
     }
     .hidden {
-        max-height: 0%;
+        max-height: 0px !important;
     }
     .module {
         padding: 6px;

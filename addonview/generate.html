@@ -21,10 +21,13 @@ document.getElementsByClassName("headers")[0].appendChild(header)
 // Creating icon
 const icon = document.createElement("i")
 icon.classList.add("icon")
-icon.onclick= function() {modules.classList.toggle("hidden")}
+icon.onclick = function() {
+    modules.classList.toggle("hidden")
+    this.classList.toggle("rotated")
+}
 document.getElementsByClassName("headers")[0].appendChild(icon)
 
-// Fetching Modules
+// Fetching modules
 fetch(`https://api.github.com/repos/${user}/${repo}/contents/${link}`)
 .then(res => res.json())
 .then((out) => {
@@ -56,8 +59,9 @@ function onDrag({movementX, movementY}){
     let topVal = parseInt(getStyle.top)
     gui.style.left = `${leftVal + movementX}px`
     gui.style.top = `${topVal + movementY}px`
-    console.log("move")
+    console.log(movementX, movementY)
 }
+
 headers.addEventListener("mousedown", () => { document.addEventListener("mousemove", onDrag) })
 document.addEventListener("mouseup", () => { document.removeEventListener("mousemove", onDrag) })
 </script>
@@ -111,11 +115,6 @@ document.addEventListener("mouseup", () => { document.removeEventListener("mouse
         transition: 0.5s ease-out;
         background: linear-gradient(to left, transparent 50%, rgb(50, 50, 50) 50%) right;
         background-size: 200% 100%;
-
-        width: 100%;
-        width: -moz-available;
-        width: -webkit-fill-available;
-        width: fill-available;
     }
     .module:hover {
         background-position: left;
@@ -123,9 +122,13 @@ document.addEventListener("mouseup", () => { document.removeEventListener("mouse
 
     /* Icon */
     .icon {
+        transition: 0.5s;
         content: url("https://github.com/MeteorDevelopment/meteor-client/raw/master/src/main/resources/assets/meteor-client/textures/icons/gui/triangle.png");
         height: 20px;
         width: 20px;
-        margin-left: 6px;
+        margin-left: 12px;
+    }
+    .rotated {
+        transform: rotate(-90deg); 
     }
 </style>

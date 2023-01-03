@@ -206,7 +206,6 @@ pre:hover > .copy-button {
         padding: var(--margin);
     }
 }
-
 @media (max-width: 600px) {
     img {
         width: 100%;

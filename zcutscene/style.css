@@ -7,6 +7,8 @@
     --text-primary-color: #fff;
     --text-secondary-color: #ccc;
     --link-color: #64b4ff;
+    --scrollbar-color: #ffffff80;
+    --scrollbar-background-color: #0000004d;
     --border-color: #fff3;
     --border-radius-primary: 25px;
     --border-radius-secondary: 15px;
@@ -38,10 +40,25 @@ body {
 }
 
 img {
-    width: 50%;
+    width: 400px;
+    max-width: 100%;
     display: block;
     margin: auto;
     border-radius: var(--border-radius-secondary);
+}
+
+
+/* Scrollbar */
+*::-webkit-scrollbar {
+    width: 1em;
+}
+*::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-color);
+    border-radius: var(--border-radius-primary);
+}
+*::-webkit-scrollbar-track {
+    background: var(--scrollbar-background-color);
+    border-radius: var(--border-radius-primary);
 }
 
 
@@ -62,6 +79,8 @@ img {
     border-radius: var(--border-radius-primary);
     border: solid 1px var(--border-color);
     background: var(--secondary-color);
+    max-height: calc(100% - 50px);
+    overflow: auto;
 }
 
 #sidebar > div > h3 {
@@ -204,10 +223,5 @@ pre:hover > .copy-button {
         margin: 0;
         box-sizing: border-box;
         padding: var(--margin);
-    }
-}
-@media (max-width: 600px) {
-    img {
-        width: 100%;
     }
 }

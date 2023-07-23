@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Download Latest Release</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
+        body {
+            color: #fff;
+            background-color: rgb(25 30 35);
+            font-family: 'Nunito', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 20px);
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        p {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            width: 300px;
+            max-width: 100%;
+            background: rgb(55 60 70);
+            border-radius: 25px;
+            padding: 5px;
+        }
+
+        .container * {
+            margin: 5px;
+        }
+
+        .container input {
+            color: #fff;
+            background: rgb(25 30 35);
+            border: none;
+            border-radius: 15px;
+            padding: 8px;
+        }
+
+        button {
+            color: #fff;
+            background: rgb(0, 150, 255);
+            border: none;
+            border-radius: 15px;
+            padding: 8px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background: rgb(0, 120, 220);
+        }
+
+        button:active {
+            background-color: rgb(0, 90, 185);
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        function createDownloadPage(asset) {
+            const downloadDiv = document.createElement('div');
+            const titleHeading = document.createElement('h1');
+            const descriptionParagraph = document.createElement('p');
+            const downloadButton = document.createElement('button');
+            const downloadLink = document.createElement('a');
+
+            titleHeading.textContent = 'File download started :)';
+            descriptionParagraph.textContent = 'If it doesn\'t, click on the "Download" button below:';
+            downloadButton.textContent = 'Download';
+
+            downloadDiv.classList.add('container');
+
+            downloadDiv.appendChild(titleHeading);
+            downloadDiv.appendChild(descriptionParagraph);
+            downloadDiv.appendChild(downloadButton);
+
+            downloadLink.href = asset.browser_download_url;
+            downloadLink.download = asset.name;
+            downloadLink.style.display = 'none';
+
+            downloadButton.addEventListener('click', function () {
+                downloadLink.click();
+            });
+
+            document.body.appendChild(downloadLink);
+            document.body.appendChild(downloadDiv);
+
+            downloadLink.click();
+        }
+
+        function createGeneratePage() {
+            const generateDiv = document.createElement('div');
+            const userInput = document.createElement('input');
+            const repoInput = document.createElement('input');
+            const fileInput = document.createElement('input');
+            const generateButton = document.createElement('button');
+
+            userInput.placeholder = 'User';
+            repoInput.placeholder = 'Repo';
+            fileInput.placeholder = 'File';
+            generateButton.textContent = 'Generate';
+
+            generateDiv.classList.add('container');
+
+            generateDiv.appendChild(userInput);
+            generateDiv.appendChild(repoInput);
+            generateDiv.appendChild(fileInput);
+            generateDiv.appendChild(generateButton);
+
+            document.body.appendChild(generateDiv);
+
+            generateButton.addEventListener('click', function () {
+                const user = userInput.value;
+                const repo = repoInput.value;
+                const file = fileInput.value;
+
+                if (user.trim() === '' || repo.trim() === '' || file.trim() === '') {
+                    window.alert('Please fill in all the fields.');
+                    return;
+                }
+
+                const urlParams = new URLSearchParams(window.location.search);
+                urlParams.set('user', user);
+                urlParams.set('repo', repo);
+                urlParams.set('file', file);
+
+                window.location.href = `${window.location.pathname}?${urlParams.toString()}`;
+            });
+        }
+
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('user') && urlParams.has('repo') && urlParams.has('file')) {
+            const user = urlParams.get('user');
+            const repo = urlParams.get('repo');
+            const file = urlParams.get('file');
+            let fileFound = false;
+
+            fetch(`https://api.github.com/repos/${user}/${repo}/releases/latest`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.assets) {
+                        data.assets.forEach(asset => {
+                            if (asset.name.includes(file)) {
+                                createDownloadPage(asset);
+                                fileFound = true;
+                            }
+                        });
+                    }
+
+                    if (!fileFound) {
+                        createGeneratePage();
+                    }
+                })
+                .catch(error => {
+                    console.error('An error occurred:', error);
+                    createGeneratePage();
+                });
+        } else {
+            createGeneratePage();
+        }
+    </script>
+</body>
+
+</html>

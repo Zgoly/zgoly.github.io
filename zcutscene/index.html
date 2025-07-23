@@ -1,0 +1,229 @@
+<head>
+    <title>ZCutscene documentation</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+
+    <link href="style.css" rel="stylesheet">
+    <script src="script.js"></script>
+
+    <meta name="title" content="ZCutscene documentation">
+    <meta name="description" content="ZCutscene - is a powerful tool for Roblox developers who want to create and edit professional-quality cutscenes in their games.">
+    <meta name="keywords" content="roblox, plugin, free, cutscene, animation, roblox studio, roblox cutscene plugin, roblox studio cutscene, cutscene editor plugin, cutscene roblox, how to make a cutscene in roblox, how to make a cutscene in roblox studio, how to make cutscenes in roblox studio, roblox cutscene editor, plugin, cutscene roblox plugin, roblox cutscene tutorial, roblox plugin, cutscene, cutscene roblox studio, roblox cutscene editor plugin, cutscene editor plugin roblox, zcutscene, cutscene documentation, zcutscene documentation, documentation, help">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="English">
+    <meta name="author" content="Zgoly">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <div id="content">
+        <div id="sidebar">
+            <div>
+                <h3>ZCutscene documentation</h3>
+                <a target="_blank" href="https://www.roblox.com/library/10081389198">Plugin</a>
+                <a href="#home">Home</a>
+                <a href="#start">Before you start</a>
+                <h3>Toolbar buttons</h3>
+                <a href="#b1">(1) Insert objects</a>
+                <a href="#b2">(2) Set folder</a>
+                <a href="#b3">(3) Create new</a>
+                <a href="#b4">(4) Rename +1</a>
+                <a href="#b5">(5) Rename -1</a>
+                <a href="#b6">(6) Change grid size</a>
+                <a href="#b7">(7) Hide/Show</a>
+                <h3>Editing</h3>
+                <a href="#e1">Create/edit</a>
+                <h3>Other</h3>
+                <a href="#o1">ZCutscene script</a>
+                <a href="#o2">In addition</a>
+                <a href="#o3">Information</a>
+            </div>
+        </div>
+        <div id="blocks">
+            <div class="block" id="home">
+                <h1>Home</h1>
+                <p>This is the home page of the <a href="https://www.roblox.com/library/10081389198">ZCutscene</a> documentation. This plugin will help you create amazing scenes and customize them as much as possible. On this page you can find information on: <ul>
+                    <li>ZCutscene plugin features</li>
+                    <li>How to use plugin</li>
+                    <li>Little introduction to ZCutscene script</li>
+                    <li>And many more!</li>
+                </ul></p>
+                <p>To navigate faster, use side menu.</p>
+            </div>
+            
+            <div class="block" id="start">
+                <h1>Before you start</h1>
+                <p>Before you start, check if you are ready to create cutscenes:<ul>
+                    <li>Check if enabled <code>Output</code>. If not, at the top of Roblox Studio find <code>View</code> tab, there find and enable <code>Output</code></li>
+                    <li>Check if enabled <code>Command Bar</code>. If not, at the top of Roblox Studio find <code>View</code> tab, there find and enable <code>Command Bar</code></li>
+                </ul></p>
+                <p>In <code>Output</code>, you can see a message about successful / unsuccessful action of plugin, and brief instructions for some functions.</p>
+                <p>In <code>Command Bar</code>, you can quickly execute scripts like in <code>In addition</code> category.</p>
+            </div>
+
+            <div class="block" id="b1">
+                <h1>(1) Insert objects</h1>
+                <p>That button inserts 2 objects into workspace: <ol>
+                    <li><code>Cutscene</code> folder</li>
+                    <li><code>CutsceneScript</code></li>
+                </ol></p>
+                <p>Click on it and put inserted objects in:<ol>
+                    <li>You can keep <code>Cutscene</code> folder in workspace.</li>
+                    <li>If you want, you can move <code>CutsceneScript</code> in any of these places: <ul>
+                        <li><code>ReplicatedFirst</code></li>
+                        <li><code>StarterGui</code></li>
+                        <li><code>StarterPack</code></li>
+                        <li><code>StarterCharacterScripts</code></li>
+                        <li><code>StarterPlayerScripts</code></li>
+                    </ul></li>
+                </ol></p>
+                <p>Preparation completed!</p>
+                
+            </div>
+
+            <div class="block" id="b2">
+                <h1>(2) Set folder</h1>
+                <p>Sets current selection as path to cutscene folder. This is necessary for the <code>(3) Create new</code> and <code>(7) Hide/Show</code> buttons to work.</p>
+                <p>To set folder, select the folder in <code>Explorer</code> and click on this button.</p>
+                <p>Why does this button exist?</p>
+                <p>The fact is that this plugin differs from other similar ones in that it can be used to create an unlimited number of cutscenes, so plugin has the ability to set main folder for them.</p>
+            </div>
+
+            <div class="block" id="b3">
+                <h1>(3) Create new</h1>
+                <p>Creates new camera position, using previous as template. This is the main function, which has several uses.</p>
+
+                <p>The first is without selection. It won't work without <code>(2) Set folder</code>. When clicked, it clones most recent object in the folder and gives it a name based on how many childrens there are in folder.</p>
+                <img src="images/3.1.gif"></img>
+
+                <p>The second is using selection. It <strong>will</strong> work without <code>(2) Set folder</code>. To do this, you need to select camera position and click on the button. It clones the selected object and gives it a name that is 1 more than the name of the selected object.</p>
+                <img src="images/3.2.gif"></img>
+
+                <p>First method requires "purity" in the folder, that is, there should not be any other objects in the folder, except for camera positions.</p>
+
+                <p>Both methods teleport just created <code>camera position</code> to your camera and align its position and orientation to the grid, to change this see <code>(6) Change grid size</code>.</p>
+            </div>
+
+            <div class="block" id="b4">
+                <h1>(4) Rename +1</h1>
+                <p>Adds "1" to selected object names. Select camera positions and click this button. Anything you selected will increase by 1 in name.</p>
+                <img src="images/4.gif"></img>
+            </div>
+
+            <div class="block" id="b5">
+                <h1>(5) Rename -1</h1>
+                <p>Subtracts "1" from selected object names. Select camera positions and click this button. Anything you selected will decrease by 1 in name.</p>
+                <img src="images/5.gif"></img>
+            </div>
+
+            <div class="block" id="b6">
+                <h1>(6) Change grid size</h1>
+                <p>Grid affects on position and orientation of camera positions. You can change it to:<ol>
+                    <li><code>1</code></li>
+                    <li><code>0.5</code></li>
+                    <li><code>0.1</code></li>
+                    <li><code>0</code></li>
+                </ol></p>
+                <p>If <code>0</code>, then grid is disabled.</p>
+            </div>
+
+            <div class="block" id="b7">
+                <h1>(7) Hide/Show</h1>
+                <p>Hides/shows all camera positions in the cutscene folder.</p>
+                <img src="images/7.gif"></img>
+            </div>
+
+            <div class="block" id="e1">
+                <h1>Create/edit camera positions</h1>
+                <p>As mentioned earlier, to create a camera position, you need to click on the <code>(3) Create new</code> button. Then what about editing duration, animation, FOV...?</p>
+                <p>Everything is very simple - attributes! If you have created enough camera positions and want to edit them, then:<ul>
+                    <li>Select camera position</li>
+                    <li>Look in <code>Properties</code> and scroll to the bottom</li>
+                    <li>Change variable values!</li>
+                </ul></p>
+                <img src="images/attributes.png"></img>
+                <p>You can change variable values to whatever you want. Just remember a few things:<ul>
+                    <li>If field for number, write number there</li>
+                    <li>If field requires animation name, write name without <code>Enum.Xx.</code> there. Example:<ul>
+                        <li><code>Enum.EasingStyle.Quad</code> → <code>Quad</code></li>
+                        <li><code>Enum.EasingDirection.Out</code> → <code>Out</code></li>
+                    </ul>
+                </ul></p>
+                <p>Also, if you don't want to change any variable values, for example <code>FOV</code>, just click on gear next to variable → Delete. If variable is optional, script will skip it.</p>
+            </div>
+
+            <div class="block" id="o1">
+                <h1>ZCutscene script</h1>
+                <p><code>CutsceneScript</code> is the script required for cutscene to work. <code>CutsceneScript</code> can be obtained using <code>(1) Insert objects</code> button.
+                <p>Initially, the script is only executed when it is initialized, but you can change this.</p>
+                <p>Below are some examples of good usage.</p>
+                <h1>1. Start cutscene for all players on server in one time</h1>
+                <p>First create a <code>RemoteEvent</code> and put it in <code>ReplicatedStorage</code>. Name it <code>StartCutscene</code>.</p>
+                <p>Next, open <code>CutsceneScript</code>, scroll to the bottom and replace these lines:</p>
+                <pre><code class="lua"><span class="built-in">wait</span>()
+<span class="local-method">StartCutscene</span>(<span class="built-in">workspace</span>.<span class="local-property">Cutscene</span>)</code></pre>
+                <p>With this one:</p>
+                <pre><code class="lua"><span class="built-in">game</span>.<span class="local-property">ReplicatedStorage</span>.<span class="local-property">StartCutscene</span>.<span class="local-property">OnClientEvent</span>:<span class="local-method">Connect</span>(<span class="keyword">function</span>()
+    <span class="local-method">StartCutscene</span>(<span class="built-in">workspace</span>.<span class="local-property">Cutscene</span>)
+<span class="keyword">end</span>)</code></pre>
+                <p>Next, you need to create a <code>Script</code> and put it wherever you like. I recommend putting it in <code>ServerScriptService</code>. Open script you just created and paste a couple of lines into it:</p>
+                <pre><code class="lua"><span class="built-in">wait</span>(<span class="number">30</span>)
+<span class="built-in">game</span>.<span class="local-property">ReplicatedStorage</span>.<span class="local-property">StartCutscene</span>:<span class="local-method">FireAllClients</span>(<span class="built-in">workspace</span>.<span class="local-property">Cutscene</span>)</code></pre>
+                <p>That's it! Now, after 30 seconds, for every player on the server will start a cutscene.</p>
+                <h1>2. Start cutscene for player who touched part</h1>
+                <p>First create a <code>RemoteEvent</code> and put it in <code>ReplicatedStorage</code>. Name it <code>StartCutscene</code>.</p>
+                <p>Next, open <code>CutsceneScript</code>, scroll to the bottom and replace these lines:</p>
+                <pre><code class="lua"><span class="built-in">wait</span>()
+<span class="local-method">StartCutscene</span>(<span class="built-in">workspace</span>.<span class="local-property">Cutscene</span>)</code></pre>
+                <p>With this one:</p>
+                <pre><code class="lua"><span class="built-in">game</span>.<span class="local-property">ReplicatedStorage</span>.<span class="local-property">StartCutscene</span>.<span class="local-property">OnClientEvent</span>:<span class="local-method">Connect</span>(<span class="keyword">function</span>()
+    <span class="local-method">StartCutscene</span>(<span class="built-in">workspace</span>.<span class="local-property">Cutscene</span>)
+<span class="keyword">end</span>)</code></pre>
+                <p>Next, you need to create a <code>Script</code> and put it in the part. Open script you just created and paste this code into it:</p>
+                <pre><code class="lua"><span class="keyword">local</span> Part = <span class="built-in">script</span>.<span class="local-property">Parent</span>
+<span class="keyword">local</span> Debounce = <span class="literal">false</span>
+
+Part.<span class="local-property">Touched</span>:<span class="local-method">Connect</span>(<span class="keyword">function</span>(Hit)
+    <span class="keyword">if</span> Hit.<span class="local-property">Parent</span>:<span class="local-method">FindFirstChild</span>(<span class="string">"Humanoid"</span>) <span class="keyword">and</span> <span class="keyword">not</span> Debounce <span class="keyword">then</span>
+        Debounce = <span class="literal">true</span>
+        <span class="keyword">local</span> Player = <span class="built-in">game</span>.<span class="local-property">Players</span>:<span class="local-method">GetPlayerFromCharacter</span>(Hit.<span class="local-property">Parent</span>)
+        <span class="built-in">game</span>.<span class="local-property">ReplicatedStorage</span>.<span class="local-property">StartCutscene</span>:<span class="local-method">FireClient</span>(Player, <span class="built-in">workspace</span>.<span class="local-property">Cutscene</span>)
+        <span class="built-in">wait</span>(<span class="number">30</span>)
+        Debounce = <span class="literal">false</span>
+    <span class="keyword">end</span>
+<span class="keyword">end</span>)</code></pre>
+                <p>That's it! Now, after player touches the part, a cutscene will start for him, and for 30 seconds it will not be possible to start cutscene again.</p>
+            </div>
+
+            <div class="block" id="o2">
+                <h1>In addition</h1>
+                <p>Convert values to Attributes:</p>
+                <pre><code class="lua"><span class="keyword">local</span> CHS = <span class="built-in">game</span>:<span class="local-method">GetService</span>(<span class="string">"ChangeHistoryService"</span>)
+CHS:<span class="local-method">SetWaypoint</span>(<span class="string">"Convert Before"</span>)
+
+<span class="keyword">local</span> Sel = <span class="built-in">game</span>:<span class="local-method">GetService</span>(<span class="string">"Selection"</span>):<span class="local-method">Get</span>()
+<span class="keyword">for</span> i, p <span class="keyword">in</span> <span class="built-in">pairs</span>(Sel[<span class="number">1</span>]:<span class="local-method">GetChildren</span>()) <span class="keyword">do</span>
+    <span class="keyword">for</span> _, v <span class="keyword">in</span> <span class="built-in">pairs</span>(p:<span class="local-method">GetChildren</span>()) <span class="keyword">do</span>
+        p:<span class="local-method">SetAttribute</span>(v.<span class="local-property">Name</span>, v.<span class="local-property">Value</span>)
+        v:<span class="local-method">Destroy</span>()
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+CHS:<span class="local-method">SetWaypoint</span>(<span class="string">"Convert After"</span>)</code></pre>
+            </div>
+
+            <div class="block" id="o3">
+                <h1>Information</h1>
+                <p>Thanks for reading. If plugin and documentation was useful to you, please <a href="https://www.roblox.com/library/10081389198/">rate it</a>!</p>
+                <h1>About</h1>
+                <p><a href="https://www.autohotkey.com/">AutoHotKey</a>, <a href="https://www.autohotkey.com/boards/viewtopic.php?t=72011">Gdip</a> - screenshots</p>
+                <p><a href="https://ezgif.com/">Ezgif</a> - creating gifs from screenshots</p>
+                <p><a href="https://code.visualstudio.com/">Visual Studio Code</a>, <a href="https://www.roblox.com/create/">Roblox Studio</a> - coding</p>
+                <p><a href="https://www.roblox.com/library/6045494621">Material Icons</a> - plugin icons</p>
+                <p><a href="https://pages.github.com/">Github Pages</a> - website hosting</p>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>© Zgoly | 2023</p>
+    </footer>
+</body>
